@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: fct_daily_prices
+    description: >
+      Enriched daily price fact: USD translation, returns, moving averages,
+      annualised volatility and 52-week drawdown. Grain = (symbol, trading_date).
+    columns:
+      - name: price_id
+        tests: [unique, not_null]
+      - name: symbol
+        tests: [not_null]
+      - name: trading_date
+        tests: [not_null]
+      - name: close
+        tests: [not_null]
+      - name: usd_pkr
+        tests: [not_null]
+
+  - name: fct_market_summary
+    description: Market-level daily summary with breadth + macro context.
+    columns:
+      - name: market_day_id
+        tests: [unique, not_null]
+      - name: trading_date
+        tests: [unique, not_null]
+      - name: equal_weight_index
+        tests: [not_null]
+
+  - name: agg_sector_performance
+    description: Trailing returns & volatility by sector.
+    columns:
+      - name: sector
+        tests: [unique, not_null]
+
+  - name: dim_stocks
+    description: SCD2 stock dimension (multiple versions per symbol possible).
+    columns:
+      - name: dbt_scd_id
+        tests: [unique, not_null]
+      - name: symbol
+        tests: [not_null]
+      - name: is_current
+        tests: [not_null]

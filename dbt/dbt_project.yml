@@ -1,0 +1,28 @@
+name: psx_warehouse
+version: 1.0.0
+config-version: 2
+
+profile: psx_warehouse
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]
+test-paths: ["tests"]
+
+clean-targets:
+  - target
+  - dbt_packages
+
+models:
+  psx_warehouse:
+    staging:
+      +materialized: view
+      +docs:
+        node_color: "#8f97a3"
+    marts:
+      +materialized: table
+      +docs:
+        node_color: "#0e7c3a"
+
+seeds:
+  +quote_columns: false

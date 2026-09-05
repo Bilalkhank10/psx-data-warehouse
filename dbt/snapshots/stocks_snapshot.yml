@@ -1,0 +1,11 @@
+snapshots:
+  - name: stocks_snapshot
+    relation: ref('stocks')
+    description: >
+      SCD Type 2 history of the stock universe seed. Any change to company
+      metadata (name, sector, industry) closes the current row via
+      `dbt_valid_to` and opens a new version — enabling as-was analysis.
+    config:
+      unique_key: symbol
+      strategy: timestamp
+      updated_at: updated_at

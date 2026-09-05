@@ -1,0 +1,20 @@
+# Data artifacts (rebuild with the pipeline — don't commit binaries)
+warehouse.duckdb
+warehouse.duckdb.wal
+data/raw/
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

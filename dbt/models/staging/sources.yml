@@ -1,0 +1,47 @@
+version: 2
+
+sources:
+  - name: raw
+    description: >
+      Raw extracts landed by the Python ingestion layer (`ingestion/run_ingestion.py`).
+      Tables are full-refreshed on every run and always carry `loaded_at` (UTC)
+      so freshness can be monitored with `dbt source freshness`.
+    schema: main
+    tables:
+      - name: raw_psx_prices
+        description: Daily OHLCV bars per PSX symbol, from Yahoo Finance (or synthetic fallback).
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 36, period: hour}
+          error_after: {count: 96, period: hour}
+        columns:
+          - name: symbol
+            tests: [not_null]
+          - name: trading_date
+            tests: [not_null]
+          - name: close
+            tests: [not_null]
+          - name: is_synthetic
+
+      - name: raw_fx_rates
+        description: Daily USD/PKR exchange rate closes.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 36, period: hour}
+          error_after: {count: 96, period: hour}
+        columns:
+          - name: rate_date
+            tests: [not_null]
+          - name: usd_pkr
+            tests: [not_null]
+
+      - name: raw_market_index
+        description: >
+          Official KSE-100 index closes from Yahoo (`^KSE`). NOTE: Yahoo's feed
+          for this ticker went stale around 2021 — the pipeline tolerates this
+          and downstream marts fall back to an equal-weight universe index.
+        columns:
+          - name: trading_date
+            tests: [not_null]
+          - name: kse100_close
+            tests: [not_null]

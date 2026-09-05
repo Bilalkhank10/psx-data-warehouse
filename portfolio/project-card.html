@@ -1,0 +1,74 @@
+<!--
+  PSX Analytics — portfolio project card
+  --------------------------------------
+  Self-contained (no external CSS/JS/fonts) so it works when pasted into any
+  static site, Notion-style embed, or markdown-aware portfolio builder.
+  How to use:
+    1. Copy the <section> below into your portfolio page.
+    2. Replace the "Live dashboard" href after you deploy to Streamlit Cloud.
+-->
+<section style="font-family:'Segoe UI',Inter,Arial,sans-serif;max-width:720px;margin:24px auto;
+                background:#ffffff;border:1px solid #e5e9ec;border-radius:16px;
+                padding:28px 30px;box-shadow:0 4px 18px rgba(15,23,32,.06);">
+
+  <span style="display:inline-block;background:#e8f5ec;color:#0e7c3a;font-size:12px;
+               font-weight:700;letter-spacing:1.5px;padding:4px 12px;border-radius:999px;">
+    DATA WAREHOUSE · dbt · FEATURED PROJECT
+  </span>
+
+  <h2 style="margin:14px 0 6px;font-size:24px;color:#1a1f24;">
+    PSX Analytics — Pakistan Stock Exchange Data Warehouse
+  </h2>
+
+  <p style="margin:0 0 18px;font-size:14.5px;line-height:1.6;color:#4a5561;">
+    An end-to-end pipeline: a fault-tolerant Python extractor pulls
+    <strong>24,600+ daily price records</strong> for 20 PSX large-caps plus USD/PKR
+    and SBP policy rates into DuckDB; a dbt layer models facts &amp; dimensions —
+    including a <strong>Type-2 slowly-changing dimension</strong> and ASOF currency
+    joins; <strong>41 automated tests</strong> and freshness SLAs guard quality; a
+    five-tab Streamlit dashboard serves the insights, refreshed daily by GitHub Actions.
+  </p>
+
+  <!-- metrics strip -->
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin:0 0 18px;">
+    <span style="background:#f4f6f8;border-radius:8px;padding:8px 12px;font-size:12.5px;color:#1a1f24;">📦 24.6k rows</span>
+    <span style="background:#f4f6f8;border-radius:8px;padding:8px 12px;font-size:12.5px;color:#1a1f24;">🧱 8 dbt models</span>
+    <span style="background:#f4f6f8;border-radius:8px;padding:8px 12px;font-size:12.5px;color:#1a1f24;">✅ 41 tests</span>
+    <span style="background:#f4f6f8;border-radius:8px;padding:8px 12px;font-size:12.5px;color:#1a1f24;">🕰 SCD2 snapshots</span>
+    <span style="background:#f4f6f8;border-radius:8px;padding:8px 12px;font-size:12.5px;color:#1a1f24;">⏱ Daily CI</span>
+  </div>
+
+  <!-- stack badges -->
+  <div style="margin:0 0 20px;font-size:12px;color:#5b6470;line-height:2;">
+    <span style="border:1px solid #cdd5dd;border-radius:6px;padding:3px 9px;margin-right:6px;">Python</span>
+    <span style="border:1px solid #cdd5dd;border-radius:6px;padding:3px 9px;margin-right:6px;">dbt Core</span>
+    <span style="border:1px solid #cdd5dd;border-radius:6px;padding:3px 9px;margin-right:6px;">DuckDB</span>
+    <span style="border:1px solid #cdd5dd;border-radius:6px;padding:3px 9px;margin-right:6px;">SQL</span>
+    <span style="border:1px solid #cdd5dd;border-radius:6px;padding:3px 9px;margin-right:6px;">Streamlit</span>
+    <span style="border:1px solid #cdd5dd;border-radius:6px;padding:3px 9px;margin-right:6px;">Plotly</span>
+    <span style="border:1px solid #cdd5dd;border-radius:6px;padding:3px 9px;margin-right:6px;">GitHub Actions</span>
+    <span style="border:1px solid #cdd5dd;border-radius:6px;padding:3px 9px;margin-right:6px;">Parquet</span>
+  </div>
+
+  <ul style="margin:0 0 22px;padding-left:20px;font-size:13.5px;line-height:1.75;color:#4a5561;">
+    <li>Caught &amp; flagged 14 real feed anomalies (corporate-action glitches) — monitored by a custom business-rule test, excluded from aggregates.</li>
+    <li>Finance-grade marts: annualised volatility, 52-week drawdowns, market breadth, USD-adjusted returns.</li>
+    <li>Graceful degradation: stale upstream benchmark detected; documented equal-weight index fallback.</li>
+  </ul>
+
+  <div>
+    <a href="https://github.com/Bilalkhank10/psx-data-warehouse"
+       style="display:inline-block;background:#0e7c3a;color:#ffffff;text-decoration:none;
+              font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:9px;margin-right:10px;">
+      View on GitHub →</a>
+    <a href="https://your-app.streamlit.app"
+       style="display:inline-block;border:1.5px solid #0e7c3a;color:#0e7c3a;text-decoration:none;
+              font-size:13.5px;font-weight:600;padding:8.5px 18px;border-radius:9px;">
+      Live dashboard</a>
+  </div>
+
+  <p style="margin:18px 0 0;font-size:12px;color:#8f97a3;">
+    Built by <strong style="color:#5b6470;">Umer Iqbal</strong> — Data Analyst &amp; Analytics Engineer ·
+    <a href="https://github.com/Bilalkhank10" style="color:#8f97a3;">github.com/Bilalkhank10</a>
+  </p>
+</section>

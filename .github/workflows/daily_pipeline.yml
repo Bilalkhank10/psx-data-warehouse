@@ -1,0 +1,52 @@
+name: Daily PSX pipeline
+
+on:
+  schedule:
+    - cron: "0 3 * * 1-5"        # 08:00 PKT, market days
+  workflow_dispatch: {}           # manual trigger button
+  pull_request:                   # PRs run offline build + full test suite
+    branches: [main]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Ingest market data
+        # Scheduled runs take live data (falling back to synthetic if the API
+        # throttles CI IPs); PR validation always uses deterministic synthetic
+        # data so the test suite is stable and hermetic.
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python ingestion/run_ingestion.py --offline
+          else
+            python ingestion/run_ingestion.py --offline-if-fail
+          fi
+
+      - name: dbt build (seed + snapshot + models + tests)
+        run: |
+          cd dbt
+          dbt deps --profiles-dir . || true
+          dbt seed --profiles-dir .
+          dbt snapshot --profiles-dir .
+          dbt build --profiles-dir .
+
+      - name: Source freshness check
+        run: cd dbt && dbt source freshness --profiles-dir .
+
+      - name: Upload warehouse artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: warehouse-duckdb
+          path: warehouse.duckdb
+          retention-days: 14

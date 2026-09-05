@@ -1,0 +1,21 @@
+symbol,company_name,sector,industry,listed_year,updated_at
+HBL,Habib Bank Limited,Commercial Banks,Banking,2007,2026-01-01T00:00:00
+UBL,United Bank Limited,Commercial Banks,Banking,2014,2026-01-01T00:00:00
+MCB,MCB Bank Limited,Commercial Banks,Banking,2000,2026-01-01T00:00:00
+MEBL,Meezan Bank Limited,Commercial Banks,Islamic Banking,2000,2026-01-01T00:00:00
+BAHL,Bank AL Habib Limited,Commercial Banks,Banking,2005,2026-01-01T00:00:00
+OGDC,Oil & Gas Development Company,Oil & Gas Exploration,Exploration & Production,2003,2026-01-01T00:00:00
+PPL,Pakistan Petroleum Limited,Oil & Gas Exploration,Exploration & Production,2004,2026-01-01T00:00:00
+PSO,Pakistan State Oil Company,Oil Marketing,Marketing & Distribution,2004,2026-01-01T00:00:00
+HUBC,Hub Power Company,Power Generation,Independent Power Producer,2000,2026-01-01T00:00:00
+KAPCO,Kot Addu Power Company,Power Generation,Independent Power Producer,2005,2026-01-01T00:00:00
+LUCK,Lucky Cement Limited,Cement,Cement Manufacturing,2008,2026-01-01T00:00:00
+DGKC,D.G. Khan Cement Company,Cement,Cement Manufacturing,2004,2026-01-01T00:00:00
+MLCF,Maple Leaf Cement Factory,Cement,Cement Manufacturing,2004,2026-01-01T00:00:00
+FFC,Fauji Fertilizer Company,Fertilizer,Nitrogen Fertilizers,2004,2026-01-01T00:00:00
+ENGRO,Engro Corporation,Fertilizer,Diversified Conglomerate,2004,2026-01-01T00:00:00
+SYS,Systems Limited,Technology,IT Services & Consulting,2015,2026-01-01T00:00:00
+TRG,TRG Pakistan Limited,Technology,Technology Holding,2004,2026-09-05T00:00:00
+NML,Nishat Mills Limited,Textile,Composite Textiles,2004,2026-01-01T00:00:00
+PSMC,Pak Suzuki Motor Company,Automobile,Passenger Vehicles,2004,2026-01-01T00:00:00
+HCAR,Honda Atlas Cars,Automobile,Passenger Vehicles,2004,2026-01-01T00:00:00

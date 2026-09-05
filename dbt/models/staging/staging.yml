@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_psx_prices
+    description: Cleaned daily OHLCV per PSX symbol. Grain = (symbol, trading_date).
+    columns:
+      - name: price_id
+        tests: [unique, not_null]
+      - name: symbol
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stocks')
+              field: symbol
+      - name: trading_date
+        tests: [not_null]
+      - name: close
+        tests: [not_null]
+
+  - name: stg_fx_rates
+    description: Daily USD/PKR closes. Grain = rate_date.
+    columns:
+      - name: rate_date
+        tests: [unique, not_null]
+      - name: usd_pkr
+        tests: [not_null]
+
+  - name: stg_policy_rates
+    description: SBP policy rate change events (seeded).
+    columns:
+      - name: effective_date
+        tests: [unique, not_null]
+      - name: policy_rate_pct
+        tests: [not_null]
+
+  - name: stg_market_index
+    description: Official KSE-100 closes (feed may be stale upstream).
+    columns:
+      - name: trading_date
+        tests: [unique, not_null]
+      - name: kse100_close
+        tests: [not_null]

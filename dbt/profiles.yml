@@ -1,0 +1,10 @@
+# Connection profile. DUCKDB_PATH can be overridden via env var so the same
+# profile works locally, in CI, and inside the Streamlit dashboard.
+psx_warehouse:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('DUCKDB_PATH', '../warehouse.duckdb') }}"
+      schema: main
+      threads: 4
