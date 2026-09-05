@@ -3,7 +3,7 @@
 **Built by [Umer Iqbal](https://github.com/Bilalkhank10) · Data Analyst & Analytics Engineer · Islamabad, Pakistan**
 
 > An end-to-end analytics engineering project: live market data extraction →
-> DuckDB warehouse → dbt transformation layer (SCD2, 41 tests, freshness
+> DuckDB warehouse → dbt transformation layer (SCD2, 40 tests, freshness
 > monitoring) → an interactive Streamlit dashboard, refreshed daily by CI.
 
 **Stack:** `Python` · `yfinance` · `DuckDB` · `dbt-duckdb` · `Streamlit` · `Plotly` · `GitHub Actions`
@@ -21,7 +21,7 @@
 | Macro context | **USD/PKR** daily FX + **SBP policy rate** change events (seeded series) |
 | Benchmark | Official **KSE-100** closes where the upstream feed is alive; equal-weight universe index everywhere |
 | Models | 8 dbt models (staging views → mart tables) + 2 seeds + 1 snapshot |
-| Quality | **41 automated tests**, 2 freshness monitors, 1 deliberate anomaly monitor |
+| Quality | **40 automated tests**, 2 freshness monitors, 1 deliberate anomaly monitor |
 | Serve | 5-tab Streamlit dashboard + presentation PNGs |
 
 ## Architecture
@@ -36,7 +36,7 @@ flowchart LR
     E --> G[dbt marts<br/>fct_daily_prices · fct_market_summary<br/>agg_sector_performance · dim_stocks]
     F --> G
     G --> H[Streamlit dashboard]
-    G --> I[GitHub Actions<br/>daily run · 41 tests · artifacts]
+    G --> I[GitHub Actions<br/>daily run · 40 tests · artifacts]
 ```
 
 ## Quickstart
@@ -81,7 +81,7 @@ watch history accumulate.
 - Yahoo's `^KSE` feed went stale upstream — the pipeline detects this and the
   dashboard falls back to a documented equal-weight reconstruction.
 - CI runs are hermetic: pull requests build against a deterministic synthetic
-  generator (seed = 42), so the 41-test suite is stable without network access.
+  generator (seed = 42), so the 40-test suite is stable without network access.
 
 **5. Freshness as a first-class concern.**
 Every raw table carries `loaded_at`; `dbt source freshness` warns at 36 h and
