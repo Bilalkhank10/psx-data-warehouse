@@ -84,11 +84,27 @@ def main() -> int:
         df.to_parquet(out / "data.parquet", index=False)
 
     # ---------- load into duckdb (idempotent full refresh) ----------
+    # An empty optional source (e.g. ^KSE index feed dead upstream) must NOT
+    # crash the load: we still create the table with the expected schema so
+    # dbt sources resolve, downstream joins degrade to NULLs, and the docs
+    # already describe the fallback behaviour. Blocking load: prices/fx empty.
+    expected_cols = {
+        "prices": ["trading_date", "open", "high", "low", "close", "adj_close",
+                   "volume", "symbol", "loaded_at", "is_synthetic"],
+        "fx": ["rate_date", "usd_pkr", "loaded_at", "is_synthetic"],
+        "index": ["trading_date", "kse100_close", "volume", "loaded_at",
+                  "is_synthetic"],
+    }
     con = duckdb.connect(str(WAREHOUSE))
     for df_name, table_name in [("prices", "raw_psx_prices"),
                                 ("fx", "raw_fx_rates"),
                                 ("index", "raw_market_index")]:
-        con.register("_stage", tables[df_name])
+        df = tables[df_name]
+        if df.empty:
+            log.warning("%s: extract empty — creating schema-only table",
+                        table_name)
+            df = pd.DataFrame(columns=expected_cols[df_name])
+        con.register("_stage", df)
         con.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT * FROM _stage")
         con.unregister("_stage")
 
