@@ -7,7 +7,7 @@ Use this text on your portfolio page. Adjust the links at the bottom.
 ## Project title
 **PSX Analytics — an end-to-end data warehouse for the Pakistan Stock Exchange**
 
-**Author:** Umer Iqbal — Data Analyst & Analytics Engineer ·
+**Author:** Bilal Khan — Data Analyst & Analytics Engineer ·
 [github.com/Bilalkhank10](https://github.com/Bilalkhank10)
 
 ### One-liner

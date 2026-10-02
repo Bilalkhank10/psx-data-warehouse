@@ -1,6 +1,6 @@
 # PSX Analytics — Pakistan Stock Exchange Data Warehouse
 
-**Built by [Umer Iqbal](https://github.com/Bilalkhank10) · Data Analyst & Analytics Engineer · Islamabad, Pakistan**
+**Built by [Bilal Khan](https://github.com/Bilalkhank10) · Data Analyst & Analytics Engineer · Islamabad, Pakistan**
 
 > An end-to-end analytics engineering project: live market data extraction →
 > DuckDB warehouse → dbt transformation layer (SCD2, 40 tests, freshness
@@ -156,7 +156,7 @@ psx-data-warehouse/
 
 ## About the author
 
-**Umer Iqbal** — Data Analyst & Analytics Engineer based in Islamabad, Pakistan.
+**Bilal Khan** — Data Analyst & Analytics Engineer based in Islamabad, Pakistan.
 I build end-to-end data products: extraction, modeling, testing, and the
 dashboards people actually read. Open to Data Analyst and Analytics Engineer
 roles.
@@ -167,4 +167,4 @@ roles.
 
 ## License
 
-MIT © 2026 Umer Iqbal — data belongs to its respective owners; code is free to reuse.
+MIT © 2026 Bilal Khan — data belongs to its respective owners; code is free to reuse.

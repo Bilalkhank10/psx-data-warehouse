@@ -246,7 +246,7 @@ with tab_dq:
         f"{r.t}: {r.last_load:%Y-%m-%d %H:%M}" for r in fresh.itertuples()))
 
 st.divider()
-st.caption("Built by **[Umer Iqbal](https://github.com/Bilalkhank10)** — Data Analyst & "
+st.caption("Built by **[Bilal Khan](https://github.com/Bilalkhank10)** — Data Analyst & "
            "Analytics Engineer · Stack: yfinance → Python extractor → DuckDB → dbt "
            "(staging/marts/tests/snapshots) → Streamlit · "
            "[Repo & docs](https://github.com/Bilalkhank10/psx-data-warehouse)")
